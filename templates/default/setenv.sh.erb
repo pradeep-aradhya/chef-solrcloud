@@ -1,0 +1,25 @@
+#!/bin/sh
+
+JAVA_HOME="<%= @java %>"
+
+# run JVM in server mode
+JAVA_OPTS="$JAVA_OPTS -server"
+
+# memory
+JAVA_OPTS="$JAVA_OPTS -Xms128m -Xmx2048m"
+JAVA_OPTS="$JAVA_OPTS -XX:PermSize=64m -XX:MaxPermSize=128m -XX:+UseG1GC"
+
+# Timezone and JVM file encoding
+JAVA_OPTS="$JAVA_OPTS -Duser.timezone=UTC -Dfile.encoding=UTF8"
+
+# solr.solr.home => solr home for this app instance
+# solr.data.dir => solr data for this app instance
+# port => app server port no.
+# hostContext => wepapp context name
+# zkHost => ZooKeeper ensemble host names and its client port no.
+# zkClientTimeout => ZooKeeper client timeout
+SOLR_OPTS="-Dsolr.solr.home=<%= node[:solr][:home_dir] %> %> -Dport=<%= node[:solr][:port] %> -DhostContext=solr -DzkClientTimeout=20000 -DzkHost=<%= node[:zk][:server1] %> %>
+
+JAVA_OPTS="$JAVA_OPTS $SOLR_OPTS"
+
+SOLR_OPTS="-Dsolr.solr.home=<%= @solrhome %> -Dhost=solr1.example.org -Dport=<%= @tmctport %> -DhostContext=solr -DzkClientTimeout=20000 -DzkHost=<%= @zkhost %>"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<solr>
+ 
+ <!-- Values are supplied from SOLR_OPTS env variavle in setenv.sh -->
+  <solrcloud>
+    <str name="host">${host:}</str>
+    <int name="hostPort">${port:}</int>
+    <str name="hostContext">${hostContext:}</str>
+    <int name="zkClientTimeout">${zkClientTimeout:}</int>
+    <bool name="genericCoreNodeNames">${genericCoreNodeNames:true}</bool>
+  </solrcloud>
+ 
+  <shardHandlerFactory name="shardHandlerFactory"
+    class="HttpShardHandlerFactory">
+    <int name="socketTimeout">${socketTimeout:0}</int>
+    <int name="connTimeout">${connTimeout:0}</int>
+  </shardHandlerFactory>
+ 
+</solr>
+
+SOLR_OPTS="-Dsolr.solr.home=/Users/jeeva/dc-1/solr/home1 -Dhost=solr1.example.org -Dport=7070 -DhostContext=solr -DzkClientTimeout=20000 -DzkHost=localhost:2181,localhost:2182,localhost:2183,localhost:2184,localhost:2185/solr"
