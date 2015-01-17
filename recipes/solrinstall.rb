@@ -89,7 +89,7 @@ bash "Upload and Link schema configuration files to Zookeeper" do
                 cwd "#{solrlnxclient[:home_dir]}/#{solrlnxclient[:collection]}"
                 returns 0
                 code %{
-			java -DnumShards=2 -DzkHost=ip-172-30-0-147:2181  -jar start.jar &> /dev/null
+			java -DnumShards=2 -DzkHost=ip-10-20-0-5:2181  -jar start.jar &> /dev/null
                }
 end
 
