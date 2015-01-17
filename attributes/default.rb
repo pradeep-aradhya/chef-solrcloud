@@ -24,20 +24,7 @@ default[:solr_cloud][:script_loc] ="#{node[:solr_cloud][:home_dir]}/#{node[:solr
 default[:solr_cloud][:zk_script] ="zkcli.sh"
 default[:solr_cloud][:confname] ="solr1"
 default[:solr_cloud][:dataDir] ="#{node[:solr_cloud][:loc]}/#{node[:solr_cloud][:artifact]}/data"
-default[:solr_cloud][:zk_server1] ="ip-172-30-0-147:2181"
+default[:solr_cloud][:zk_server1] ="ip-10-20-0-5:2181"
 default[:solr_cloud][:javaArgs] ="-server -Xmx1G -Xms1G -XX:PermSize=256m -XX:MaxPermSize=256m -Xss260k -XX:+UnlockDiagnosticVMOptions -XX:+UseCompressedOops -XX:+CMSIncrementalPacing -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=75 -XX:ErrorFile=java_err.log -XX:HeapDumpPath=java.hprof -XX:+UseCMSInitiatingOccupancyOnly -XX:+CMSIncrementalMode -XX:+CMSClassUnloadingEnabled -XX:CMSIncrementalDutyCycle=10 -XX:+UseParNewGC -XX:+HeapDumpOnOutOfMemoryError -XX:+DisableExplicitGC -XX:SoftRefLRUPolicyMSPerMB=1 -XX:NewRatio=1 -XX:CMSIncrementalDutyCycleMin=0"
 
-#Tomcat Attribute
-default[:tmct][:artifact] ="apache-tomcat-8.0.15"
-default[:tmct][:user] = "root"
-default[:tmct][:artifactName] ="#{node[:tmct][:artifact]}.tar.gz"
-default[:tmct][:installer_url] = "http://download.openpkg.org/components/cache/tomcat/#{node[:tmct][:artifactName]}"
-default[:tmct][:loc] ="/opt"
-default[:tmct][:home_dir] ="/opt/#{node[:tmct][:artifact]}"
-default[:tmct][:deploy_loc] ="#{node[:tmct][:home_dir]}/webapps"
-default[:tmct][:dataDir] ="#{node[:tmct][:loc]}/#{node[:tmct][:artifact]}/conf/Catalina/localhost/"
-default[:tmct][:port] ="8080"
-default[:tmct][:java] = "/usr/bin/java"
-default[:tmct][:oldSrvrXml] = 'redirectPort="8443"'
-default[:tmct][:newSrvrXml] = 'redirectPort="8443" URIEncoding="UTF-8" maxHttpHeaderSize="8192"'
 
