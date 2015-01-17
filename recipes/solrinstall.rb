@@ -91,5 +91,6 @@ bash "Upload and Link schema configuration files to Zookeeper" do
                 code %{
 			java -DnumShards=2 -DzkHost=ip-10-20-0-5:2181  -jar start.jar &> /dev/null
                }
+not_if %{ps -ef |grep java|grep -v grep|grep start.jar}
 end
 
